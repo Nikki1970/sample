@@ -11,7 +11,7 @@
   <h1 class="text-2xl mt-10">Posts List</h1>
   <ul class="mt-6 list-disc list-inside">
   {% for post in posts %}
-    <li class="text-gray-900">{{ post }} - <span class="text-sm text-gray-500">{{ post.author }}</span></li>
+    <li class="text-gray-900"><a class="text-indigo-500" href={% url 'post-detail' slug=post.slug %}>{{ post.title }}</a> - <span class="text-sm text-gray-500">{{ post.author }}</span></li>
   {% endfor %}    
   </ul>
 </body>
