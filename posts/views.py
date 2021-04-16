@@ -2,18 +2,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.db import transaction
-
+from django.views.generic import ListView
 from .models import Post
 from .forms import PostForm
 
 
-def posts_list(request):
-    objects = Post.objects.all()
-
-    context = {
-        'posts': objects
-    }
-    return render(request, 'list.html', context)
+class PostsListView(ListView):
+    template_name = 'list.html'
+    model = Post
+    context_object_name = 'posts'
 
 
 def post_detail(request, slug):
