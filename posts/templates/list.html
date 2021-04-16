@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <title>Posts List</title>
+    <style>
+      body {
+        background-image: url('https://source.unsplash.com/1600x900/?nature,water')
+      }
+    </style>
 </head>
-<body class="bg-gray-100 max-w-md mx-auto">
-  <h1 class="text-2xl mt-10">Posts List</h1>
-  <ul class="mt-6 list-disc list-inside">
-  {% for post in posts %}
-    <li class="text-gray-900"><a class="text-indigo-500" href={% url 'post-detail' slug=post.slug %}>{{ post.title }}</a> - <span class="text-sm text-gray-500">{{ post.author }}</span></li>
-  {% endfor %}    
-  </ul>
+<body class="bg-gray-100 max-w-full bg-cover mx-auto bg-no-repeat p-20 ">
+  <div class="bg-white p-10">
+    <h1 class="text-2xl mt-10">Posts List</h1>
+    <ul class="mt-6 list-disc list-inside">
+    {% for post in posts %}
+      <li class="text-gray-900"><a class="text-indigo-500" href={% url 'post-detail' slug=post.slug %}>{{ post.title }}</a> - <span class="text-sm text-gray-500">{{ post.author }}</span></li>
+    {% endfor %}    
+    </ul>
+  </div>
 </body>
 </html>
