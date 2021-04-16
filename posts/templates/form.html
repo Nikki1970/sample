@@ -9,13 +9,15 @@
 </head>
 <body class="bg-gray-100 max-w-md mx-auto">
   <div class="px-4 py-10 max-w-3xl mx-auto sm:px-6 sm:py-12 lg:max-w-4xl lg:py-16 lg:px-8 xl:max-w-6xl">
-    <h1 class="text-2xl mt-10">{{ post.title }}</h1>
-    <div class="mt-4 text-indigo-500"><a href="{% url 'post-edit' slug=post.slug %}">Edit</a></div>
+    <h1 class="text-2xl mt-10">Edit {{ post.title }}</h1>
 
-    <div class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto mt-4">
-        {{ post.body }}
-    </div>
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="mt-4 text-white font-bold bg-indigo-500 rounded px-5 py-3 capitalize">Submit</button>
+    </form>
   </div>
 </body>
 </html>
+
 
