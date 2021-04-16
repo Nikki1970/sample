@@ -1,5 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.db import transaction
+
 from .models import Post
 from .forms import PostForm
 
@@ -37,4 +40,17 @@ def post_edit(request, slug):
     return render(request, 'form.html', context)
 
 
+@transaction.atomic
+@login_required
+def post_create(request):
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.author = request.user
+        obj.save()
+        return redirect('post-detail', slug=obj.slug)
 
+    context = {
+        'form': form
+    }
+    return render(request, 'form.html', context)

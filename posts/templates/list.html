@@ -15,6 +15,9 @@
 <body class="bg-gray-100 max-w-full bg-cover mx-auto bg-no-repeat p-20 ">
   <div class="bg-white p-10">
     <h1 class="text-2xl mt-10">Posts List</h1>
+    <div class="mt-5">
+    <a class="text-white px-5 py-3 rounded bg-red-500 uppercase font-bold tracking-wide" href="{% url 'post-create' %}">Create</a>
+    </div>
     <ul class="mt-6 list-disc list-inside">
     {% for post in posts %}
       <li class="text-gray-900"><a class="text-indigo-500" href={% url 'post-detail' slug=post.slug %}>{{ post.title }}</a> - <span class="text-sm text-gray-500">{{ post.author }}</span></li>
